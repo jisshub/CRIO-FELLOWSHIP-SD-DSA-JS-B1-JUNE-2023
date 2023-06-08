@@ -129,3 +129,92 @@ console.log(Sum(1, 2));  // O(1)
 
 Therefore, we can conclude that the total time complexity of the program is constant or O(1). The program performs a fixed number of operations regardless of the input values, and the time it takes to execute remains constant.
 
+### Example 4 - 2 Nested For Loops
+
+```js
+function solve(n) {
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      console.log(i * j)
+    }
+  }
+}
+
+solve(5)
+```
+
+### Explanation: 
+
+To determine the time complexity of the given code, let's analyze it line by line:
+
+1. The code defines a function `solve` that takes an input `n`.
+   - Time complexity: O(1) (constant time)
+
+2. The code initializes a loop variable `i` to 0 and iterates as long as `i` is less than `n`.
+   - Time complexity: O(n) (linear time)
+
+3. Inside the first loop, the code initializes a loop variable `j` to 0 and iterates as long as `j` is less than `n`.
+   - Time complexity: O(n) (linear time)
+
+4. Inside the second loop, the code executes a single operation: `console.log(i * j)`.
+   - Time complexity: O(1) (constant time)
+
+The total time complexity of the nested loops can be calculated by multiplying the time complexities of each loop:
+
+- The first loop iterates `n` times, resulting in a time complexity of O(n).
+- For each iteration of the first loop, the second loop also iterates `n` times, resulting in a time complexity of O(n).
+- Inside the second loop, the operation `console.log(i * j)` has a constant time complexity of O(1).
+
+To calculate the total time complexity, we multiply the time complexities of each loop:
+
+```bash
+O(n) * O(n) * O(1) = O(n^2)
+```
+
+Therefore, the total time complexity of the code is O(n^2) or quadratic time complexity.
+
+
+### Example - 5 - 3 Nested for loops
+
+```js
+function printTriplets(n) {
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= n; j++) {
+      for (let k = 1; k <= n; k++) {
+        console.log(i, j, k);
+      }
+    }
+  }
+}
+```
+
+### Explanation:
+
+Certainly! Here's the explanation again for you to copy:
+
+The `printTriplets` function takes an input `n` and prints all possible triplets of numbers from 1 to `n`. It accomplishes this using three nested for loops.
+
+Let's analyze the time complexity of this code step by step:
+
+1. The code initializes a loop variable `i` to 1 and iterates as long as `i` is less than or equal to `n`.
+   - Time complexity: O(n) (linear time)
+
+2. Inside the first loop, the code initializes a loop variable `j` to 1 and iterates as long as `j` is less than or equal to `n`.
+   - Time complexity: O(n) (linear time)
+
+3. Inside the second loop, the code initializes a loop variable `k` to 1 and iterates as long as `k` is less than or equal to `n`.
+   - Time complexity: O(n) (linear time)
+
+4. Inside the third loop, the code executes a single operation: `console.log(i, j, k)`.
+   - Time complexity: O(1) (constant time)
+
+The total time complexity of the nested loops can be calculated by multiplying the time complexities of each loop:
+
+```bash
+O(n) * O(n) * O(n) * O(1) = O(n^3)
+```
+
+Therefore, the total time complexity of the `printTriplets` function is O(n^3) or cubic time complexity.
+
+Total Time Complexity = O(n) * O(n) * O(n) * O(1) = O(n^3)
+
