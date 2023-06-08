@@ -218,3 +218,116 @@ Therefore, the total time complexity of the `printTriplets` function is O(n^3) o
 
 Total Time Complexity = O(n) * O(n) * O(n) * O(1) = O(n^3)
 
+
+
+# Time and Space Complexity Problems
+
+## Problem - 1
+
+```js
+const sum = 0;
+for (let i = 0; i < n; i++) {
+    for (let j = i; j < n; j++) {
+        sum += j;
+    }
+}
+```
+
+### Explanation:
+
+The given code snippet calculates the sum of a series of numbers using nested loops. Let's analyze the time and space complexity of the code:
+
+Time Complexity:
+1. The code initializes a loop variable `i` to 0 and iterates as long as `i` is less than `n`.
+   - Time complexity: O(n) (linear time)
+
+2. Inside the first loop, the code initializes a loop variable `j` to `i` and iterates as long as `j` is less than `n`.
+   - Time complexity: O(n - i) (linear time)
+
+3. Inside the second loop, the code performs a constant time operation: `sum += j`.
+   - Time complexity: O(1) (constant time)
+
+To calculate the total time complexity, we need to sum up the time complexities of all the iterations:
+
+O(n) + O(n - 1) + O(n - 2) + ... + O(1) = O(n + (n - 1) + (n - 2) + ... + 1) = O(n * (n + 1) / 2) = O(n^2)
+
+Therefore, the time complexity of the code is O(n^2) or quadratic time complexity.
+
+### Space Complexity:
+The code only uses a single variable `sum` to store the result. Since the space used by `sum` does not depend on the input size `n`, the space complexity remains constant.
+
+Therefore, the space complexity of the code is O(1) or constant space complexity.
+
+
+
+## Problem - 2
+
+```js
+let count = 0;
+for (let i = 0; i < n; i++) {
+    if (i % 2 === 0) {
+        count++;
+    }
+}
+```
+
+### Explanation
+
+The given code snippet counts the number of even numbers from 0 to `n - 1`. Let's analyze the time and space complexity of the code:
+
+Time Complexity:
+1. The code initializes a loop variable `i` to 0 and iterates as long as `i` is less than `n`.
+   - Time complexity: O(n) (linear time)
+
+2. Inside the loop, the code performs a constant time operation: checking if `i` is even (`i % 2 === 0`) and incrementing `count` if true.
+   - Time complexity: O(1) (constant time)
+
+The total time complexity is determined by the number of iterations of the loop, which is `n`.
+
+Therefore, the time complexity of the code is O(n) or linear time complexity.
+
+Space Complexity:
+The code uses a single variable `count` to store the result. Since the space used by `count` does not depend on the input size `n`, the space complexity remains constant.
+
+Therefore, the space complexity of the code is O(1) or constant space complexity.
+
+
+## Problem - 3
+
+```js
+const i = 0;
+while (i < n) {
+    i++;
+    if (i % 2 === 0) {
+        i *= 2;
+    }
+}
+```
+
+
+### Explanation:
+
+The time complexity of the given code snippet is O(log n). Let's break down the code to understand why:
+
+1. The code initializes a constant variable `i` to 0.
+   - Time complexity: O(1) (constant time)
+
+2. The while loop continues as long as `i` is less than `n`.
+   - Time complexity: The number of iterations is determined by the value of `n`. Let's denote the number of iterations as `k`.
+
+3. Inside the while loop, the code increments `i` by 1.
+   - Time complexity: O(1) (constant time)
+
+4. Inside the while loop, the code checks if `i` is even (`i % 2 === 0`), and if true, it multiplies `i` by 2.
+   - Time complexity: O(1) (constant time)
+
+For each iteration, `i` is incremented by 1. However, when `i` is even, it is multiplied by 2. This means that `i` will take on powers of 2 in each iteration: 2^0, 2^1, 2^2, 2^3, and so on, until it reaches a value greater than or equal to `n`.
+
+Let's say `k` is the number of iterations required to reach a value greater than or equal to `n`. In this case, we can write `n <= 2^k`. Taking the logarithm base 2 of both sides, we get `log2(n) <= k`. Therefore, the number of iterations `k` is bounded by `log2(n)`.
+
+Hence, the time complexity of the code is O(log n), where `n` represents the input value.
+
+### Space Complexity:
+The code only uses a single constant variable `i` to store the value. Since the space used by `i` does not depend on the input size `n`, the space complexity remains constant.
+
+Therefore, the space complexity of the code is O(1) or constant space complexity.
