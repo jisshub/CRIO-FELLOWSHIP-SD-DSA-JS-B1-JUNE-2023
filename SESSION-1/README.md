@@ -331,3 +331,36 @@ Hence, the time complexity of the code is O(log n), where `n` represents the inp
 The code only uses a single constant variable `i` to store the value. Since the space used by `i` does not depend on the input size `n`, the space complexity remains constant.
 
 Therefore, the space complexity of the code is O(1) or constant space complexity.
+
+# SESSION - 2
+
+## Space Complexity
+
+- In programming, space complexity refers to the amount of memory or space required by an algorithm to solve a problem. It is a measure of how much additional memory is needed as the input size increases.
+
+- Space complexity is typically expressed in terms of the "Big O" notation, which describes the upper bound or worst-case scenario for the space requirements.
+
+### Example:
+
+```js
+function printNumbers(n) {
+  var numbers = [];
+  for (var i = 0; i < n; i++) {
+    numbers.push(i);
+  }
+  return numbers;
+}
+````
+
+### Above Problem Explanation:
+
+- It defines a function printNumbers that creates an array numbers and adds numbers from 0 to n-1 to the array using a for loop.
+
+- The numbers array grows linearly with the input n. As the loop iterates n times, the size of the array increases by 1 in each iteration. Therefore, the space complexity of this algorithm is **O(n)**.
+
+- The space complexity is **linear** because the memory required grows proportionally with the input size n.
+
+- Remember that the space complexity analysis focuses on the memory requirements of the algorithm as the input size increases, while disregarding other factors like memory used by the program's execution stack or constant-sized variables.
+
+
+
