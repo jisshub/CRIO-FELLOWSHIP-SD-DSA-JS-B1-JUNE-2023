@@ -340,7 +340,7 @@ Therefore, the space complexity of the code is O(1) or constant space complexity
 
 - Space complexity is typically expressed in terms of the "Big O" notation, which describes the upper bound or worst-case scenario for the space requirements.
 
-### Example:
+### Example 1:
 
 ```js
 function printNumbers(n) {
@@ -362,6 +362,82 @@ function printNumbers(n) {
 
 - Remember that the space complexity analysis focuses on the memory requirements of the algorithm as the input size increases, while disregarding other factors like memory used by the program's execution stack or constant-sized variables.
 
-- new change
-- 
 
+### Example 2:
+
+```js
+const sum = 0; // 1
+for (let i = 0; i < n; i++) { // 1
+  for (let j = i; j < n; j++) { // 1
+    sum += j; // 0
+  }
+}
+```
+
+### Explanation
+
+The sum variable is a constant and doesn't change with the input size. Therefore, it doesn't contribute to the space complexity.
+
+The i and j variables are loop counters and require constant space, regardless of the input size. Hence, they don't affect the space complexity.
+
+The main concern for space complexity is the memory usage of data structures or variables that grow with the input size. In this case, no data structures or variables grow with n. Therefore, the space complexity of this code is **O(1)** (constant).
+
+This means that the amount of memory required by the code remains constant, regardless of the input size n.
+
+### Line-by-Line Space Complexity Computation
+
+1. 
+```js
+const sum = 0;
+```
+The line const sum = 0; declares a constant variable sum, which requires a constant amount of space. Therefore, the space complexity of this line is O(1).
+
+2.
+```js
+for (let i = 0; i < n; i++) {
+```
+The line for (let i = 0; i < n; i++) { initializes a loop counter i and requires constant space. Hence, the space complexity of this line is also O(1).
+
+3. 
+
+```js
+for (let j = i; j < n; j++) {
+```
+
+The line for (let j = i; j < n; j++) { initializes another loop counter j and requires constant space. Therefore, the space complexity of this line is O(1).
+
+4.
+```js
+sum += j;
+```
+
+The line sum += j; performs a constant-time operation by updating the sum variable. It doesn't require additional space. Hence, the space complexity of this line is O(1).
+
+
+### Example 3:
+
+```js
+function findCommonElements(arr1, arr2) {
+  const commonElements = [];
+  for (let i = 0; i < arr1.length; i++) {
+    for (let j = 0; j < arr2.length; j++) {
+      if (arr1[i] === arr2[j]) {
+        commonElements.push(arr1[i]);
+        break;
+      }
+    }
+  }
+  return commonElements;
+}
+```
+
+### Explanation 
+
+The space complexity of the findCommonElements() function is **O(k)**, where k is the number of common elements between arr1 and arr2.
+
+This is because the function initializes an empty array called commonElements at the beginning of the function, and then appends each common element it finds to this array. The maximum size of this array is k, because there can be at most k common elements between arr1 and arr2.
+
+In the worst case, where there are no common elements between arr1 and arr2, the commonElements array will be empty and have a size of 0, resulting in a space complexity of **O(1)**.
+
+
+<!-- time: 50:00 -->
