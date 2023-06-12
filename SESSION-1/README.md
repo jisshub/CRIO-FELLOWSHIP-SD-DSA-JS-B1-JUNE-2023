@@ -571,3 +571,6 @@ In summary:
 
 The time complexity depends on the number of elements in the matrix, as each element is compared to find the maximum. The space complexity is constant because the function only uses a single variable to store the maximum value and does not allocate any additional memory based on the input size.
 
+# Session 3
+
+<!-- time: 17: 50 -->
