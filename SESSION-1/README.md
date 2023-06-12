@@ -440,4 +440,134 @@ This is because the function initializes an empty array called commonElements at
 In the worst case, where there are no common elements between arr1 and arr2, the commonElements array will be empty and have a size of 0, resulting in a space complexity of **O(1)**.
 
 
-<!-- time: 50:00 -->
+## Collections/Modules/Libraries
+
+
+
+## Arrays
+
+- In JavaScript, an array is a data structure that allows you to store and manipulate multiple values of different types in a single variable. It is a container that holds a collection of elements, which can be accessed and manipulated using their positions or indices.
+
+### Static Arrays & Dynamic Arrays
+
+The concept of static arrays typically refers to arrays with a fixed size that cannot be dynamically resized. However, JavaScript arrays are dynamic in nature, meaning they can grow or shrink as needed.
+
+
+## Matrix
+
+
+### Activities
+
+Find time and space complexities of below problems.
+
+1.
+
+```js
+function processArrays(arr, matrix) {
+    let n = arr.length;
+    let m = matrix.length;
+    
+    // Operation 1: Iterate over the 1D array
+    for (let i = 0; i < n; i++) {
+        // Perform some operation on arr[i]
+    }
+    
+    // Operation 2: Iterate over the 2D matrix
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            // Perform some operation on matrix[i][j]
+        }
+    }
+}
+```
+
+#### Explanation
+
+The time complexity of the given code is **O(nm)**, where n is the length of the 1D array arr, and m is the number of rows in the 2D matrix matrix.
+
+This is because the code performs two nested loops, one over the 1D array of length n, and another over the 2D matrix of size mxk. For each element in the array and in the matrix, the code performs a constant amount of work. Therefore, the total amount of work done by the code is proportional to nxm.
+
+The space complexity of the given code is **O(1)**, which means it uses a constant amount of extra space, regardless of the size of the input arr and matrix.
+
+This is because the code only uses a fixed number of variables (n, m, i, j, and the function parameters), and the amount of memory they consume does not depend on the size of the input. Therefore, the space complexity of the algorithm is constant.
+
+Time Complexity: O(nm)
+Space Complexity: O(1)
+
+2.
+
+```js
+function createMatrix(n) {
+    let matrix = new Array(n);
+    
+    for (let i = 0; i < n; i++) {
+        matrix[i] = new Array(n);
+        
+        for (let j = 0; j < n; j++) {
+            matrix[i][j] = i + j;
+        }
+    }
+    
+    return matrix;
+}
+```
+
+#### Explanation
+
+The given function, `createMatrix`, creates a square matrix of size `n` and assigns values to its elements. Let's analyze its time complexity and space complexity:
+
+Time Complexity:
+- The outer loop runs `n` times, representing the rows of the matrix.
+- The inner loop also runs `n` times, representing the columns of the matrix.
+- Within the inner loop, a constant-time operation (`matrix[i][j] = i + j`) is performed to assign a value to each element.
+- Therefore, the time complexity of this function is O(n^2) because the number of iterations is proportional to the square of the input size (`n`).
+
+Space Complexity:
+- The function creates a 2D array called `matrix` with a size of `n x n`. This requires allocating memory for `n` rows, each containing `n` elements.
+- The space complexity of creating the `matrix` array is O(n^2) because it grows proportionally to the square of the input size (`n`).
+- Additionally, the function uses a few variables (`i`, `j`) to keep track of indices, but these occupy a constant amount of space regardless of the input size.
+- Therefore, the overall space complexity is O(n^2).
+
+In summary:
+- Time Complexity: O(n^2)
+- Space Complexity: O(n^2)
+
+The time complexity is quadratic, meaning the number of operations grows quadratically with the input size (`n`). Similarly, the space complexity is also quadratic because the amount of memory needed increases with the square of the input size.
+
+3. 
+```js
+function findMaxElement(matrix) {
+    let maxElement = Number.MIN_VALUE;
+    
+    for (let i = 0; i < matrix.length; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            maxElement = Math.max(maxElement, matrix[i][j]);
+        }
+    }
+    
+    return maxElement;
+}
+```
+
+#### Explanation
+
+The given function, `findMaxElement`, takes a matrix as input and finds the maximum element within that matrix. Let's analyze its time complexity and space complexity:
+
+**Time Complexity:**
+- The outer loop iterates `matrix.length` times, which represents the number of rows in the matrix.
+- The inner loop iterates `matrix[i].length` times, which represents the number of columns in each row.
+- Within the inner loop, the `Math.max` function is used to compare the current element with the `maxElement` variable, updating it if necessary.
+- Since each element is visited once, the number of comparisons made is proportional to the total number of elements in the matrix.
+- Therefore, the time complexity of this function is O(rows * columns), where rows represents the number of rows and columns represents the number of columns in the matrix.
+
+**Space Complexity:**
+- The function uses a single variable, `maxElement`, to store the maximum value found.
+- Other than that, it does not use any additional data structures that grow with the input size.
+- Hence, the space complexity of this function is O(1), which is constant.
+
+In summary:
+- Time Complexity: O(rows * columns)
+- Space Complexity: O(1)
+
+The time complexity depends on the number of elements in the matrix, as each element is compared to find the maximum. The space complexity is constant because the function only uses a single variable to store the maximum value and does not allocate any additional memory based on the input size.
+
