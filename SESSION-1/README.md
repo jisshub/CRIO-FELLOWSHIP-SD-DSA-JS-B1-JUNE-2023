@@ -574,3 +574,101 @@ The time complexity depends on the number of elements in the matrix, as each ele
 # Session 3
 
 <!-- time: 17: 50 -->
+
+## Worst Case Situation
+
+- In algorithm analysis, the worst-case scenario refers to the situation where an algorithm takes the longest possible time or requires the maximum number of operations to complete. 
+
+Let's consider an example JavaScript function that performs a search for a specific element in an array using nested for loops:
+
+```js
+function searchElement(arr, target) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i][j] === target) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+```
+
+- Now, let's analyze the worst-case scenario line by line:
+
+1. The function **searchElement** takes an array (arr) and a target element (target) as parameters.
+
+2. The outer loop is initialized with let i = 0, setting the initial value of the loop variable i to 0.
+
+3. The condition i < arr.length is checked at the beginning of each iteration of the outer loop. If the condition is true, the loop body will execute; otherwise, the loop will terminate.
+
+4. Inside the outer loop, the inner loop is initialized with let j = 0, setting the initial value of the loop variable j to 0.
+
+5. The condition j < arr.length is checked at the beginning of each iteration of the inner loop. If the condition is true, the loop body will execute; otherwise, the loop will terminate.
+
+6. The loop body checks whether the element at arr[i][j] is equal to the target element. If they match (arr[i][j] === target), the function returns true to indicate that the element is found.
+
+7. If the inner loop completes without finding the target element in the current row, the outer loop continues to the next row.
+
+8. If the outer loop completes without finding the target element in any row, the function reaches the line return false, indicating that the element is not present in the array.
+
+In terms of worst-case scenario analysis, the worst case occurs when the target element is not present in the array, or it is located in the last position of the last row. In this case, both loops will iterate over the entire array, resulting in a time complexity of O(n^2), where n is the size of the array.
+
+
+## Strings
+
+- A collection of characters.
+
+#### Substring: any continous part of the original string.
+
+
+In JavaScript, a string is a sequence of characters enclosed in single quotes (''), double quotes ("") or backticks (``). Strings are one of the fundamental data types in JavaScript and are commonly used to store and manipulate textual data.
+
+Here's an example that demonstrates working with strings in JavaScript:
+
+```js
+let message = "Hello, world!";
+
+console.log(message); // Output: Hello, world!
+
+// String length
+console.log(message.length); // Output: 13
+
+// Accessing individual characters
+console.log(message[0]); // Output: H
+console.log(message.charAt(7)); // Output: w
+
+// Concatenation
+let name = "Alice";
+let greeting = "Hello, " + name + "!"; // Using the + operator
+console.log(greeting); // Output: Hello, Alice!
+
+// String interpolation (using backticks)
+let age = 25;
+let info = `My name is ${name} and I'm ${age} years old.`;
+console.log(info); // Output: My name is Alice and I'm 25 years old.
+
+// String methods
+console.log(message.toUpperCase()); // Output: HELLO, WORLD!
+console.log(message.toLowerCase()); // Output: hello, world!
+console.log(message.indexOf("world")); // Output: 7
+console.log(message.includes("llo")); // Output: true
+console.log(message.slice(7, 12)); // Output: world
+```
+
+
+#### Prefixes
+
+Any substring that starting from first letter of original string.
+
+
+#### Suffix
+
+Any substring that ends at the last letter of original string.
+
+
+<!-- time: 01:01:40 -->
+
+
+
+
