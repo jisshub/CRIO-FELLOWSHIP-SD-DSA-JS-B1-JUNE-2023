@@ -619,10 +619,10 @@ In terms of worst-case scenario analysis, the worst case occurs when the target 
 
 - A collection of characters.
 
-#### Substring: any continous part of the original string.
+#### Substring: any continuous part of the original string.
 
 
-In JavaScript, a string is a sequence of characters enclosed in single quotes (''), double quotes ("") or backticks (``). Strings are one of the fundamental data types in JavaScript and are commonly used to store and manipulate textual data.
+In JavaScript, a string is a sequence of characters enclosed in single quotes (''), double quotes (""), or backticks (``). Strings are one of the fundamental data types in JavaScript and are commonly used to store and manipulate textual data.
 
 Here's an example that demonstrates working with strings in JavaScript:
 
@@ -657,17 +657,93 @@ console.log(message.slice(7, 12)); // Output: world
 ```
 
 
-#### Prefixes
+### Prefixes
 
 Any substring that starting from first letter of original string.
 
 
-#### Suffix
+### Suffix
 
 Any substring that ends at the last letter of original string.
 
+- In JavaScript, a prefix is a set of characters placed before a variable or value, while a suffix is a set of characters placed after a variable or value. Prefixes and suffixes can be used to modify or transform data in various ways. Here are a few examples:
 
-<!-- time: 01:01:40 -->
+#### Example - Prefix with string:
+
+```js
+let message = "world";
+let prefixedMessage = "Hello, " + message;
+console.log(prefixedMessage); // Output: "Hello, world"
+```
+
+- In this example, the prefix "Hello, " is added to the string stored in the message variable using the concatenation operator "+".
+
+#### Example - Suffix with string:
+
+```js
+let fileName = "script";
+let suffixedFileName = fileName + ".js";
+console.log(suffixedFileName); // Output: "script.js"
+```
+
+- In this example, the suffix ".js" is added to the string stored in the fileName variable using the concatenation operator "+".
+
+
+## Mutables & Immutables
+
+- In JavaScript, mutability refers to whether an object or value can be changed after it has been created. Immutable objects or values cannot be modified once created, while mutable objects or values can be modified. Let's understand the concept with simple examples:
+
+### Immutable Example:
+
+```js
+let name = "John";
+let uppercaseName = name.toUpperCase();
+
+console.log(name); // Output: "John"
+console.log(uppercaseName); // Output: "JOHN"
+```
+
+- In this example, the **toUpperCase()** method is called on the name variable, which converts the string to uppercase. However, the original value of name remains unchanged. Strings in JavaScript are immutable, meaning that methods like **toUpperCase()** return a new string instead of modifying the existing one.
+
+
+### Mutable Example:
+
+```js
+let person = { name: "John", age: 25 };
+person.age = 26;
+
+console.log(person); // Output: { name: "John", age: 26 }
+```
+
+- In this example, we have an object person with properties name and age. We are able to directly modify the age property by assigning a new value to it. Objects in JavaScript are mutable, allowing us to change their properties and values.
+
+### Modifying Array Elements
+
+Example - 1
+
+```js
+let numbers = [1, 2, 3, 4];
+numbers[2] = 5;
+
+console.log(numbers); // Output: [1, 2, 5, 4]
+```
+- In JavaScript, arrays are mutable, which means their elements can be modified, added, or removed after the array is created
+
+
+Example - 2
+
+```js
+let fruits = ["apple", "banana"];
+fruits.push("orange");
+
+console.log(fruits); // Output: ["apple", "banana", "orange"]
+
+```
+
+<!-- time: 1:48:00 -->
+
+
+
 
 
 
