@@ -740,8 +740,33 @@ console.log(fruits); // Output: ["apple", "banana", "orange"]
 
 ```
 
-<!-- time: 1:48:00 -->
+## Ascii Code
 
+ASCII (American Standard Code for Information Interchange) is a character encoding standard that assigns unique numeric codes to represent characters. In JavaScript, you can use the `charCodeAt()` method to retrieve the ASCII code of a specific character within a string.
+
+Here's an example that demonstrates the usage of `charCodeAt()`:
+
+```javascript
+const character = 'A';
+const asciiCode = character.charCodeAt(0);
+
+console.log(asciiCode); // Output: 65
+```
+
+In this example, the string `'A'` represents a single character. The `charCodeAt(0)` method is called on the string to retrieve the ASCII code of the character at index 0. The returned value, in this case, is `65`, which corresponds to the ASCII code of the capital letter 'A'.
+
+Conversely, if you have an ASCII code and want to convert it back to its corresponding character, you can use the `String.fromCharCode()` method. Here's an example:
+
+```javascript
+const asciiCode = 65;
+const character = String.fromCharCode(asciiCode);
+
+console.log(character); // Output: A
+```
+
+In this example, the variable `asciiCode` holds the ASCII code `65`, and `String.fromCharCode(asciiCode)` is used to convert it back to the character 'A'.
+
+These methods allow you to work with ASCII codes and characters in JavaScript, enabling you to perform conversions and manipulate text based on their numeric representations.
 
 
 
