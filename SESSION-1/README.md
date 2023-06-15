@@ -769,7 +769,116 @@ In this example, the variable `asciiCode` holds the ASCII code `65`, and `String
 These methods allow you to work with ASCII codes and characters in JavaScript, enabling you to perform conversions and manipulate text based on their numeric representations.
 
 
+## SESSION - 4
+
+### Linear Search 
+  
+Linear search, also known as sequential search, is a simple search algorithm that sequentially checks each element in a list or array to find a specific target value. It works by starting at the beginning of the list and comparing each element with the target value until a match is found or the end of the list is reached.
+
+Here's the step-by-step process for performing a linear search:
+
+1. Start at the first element of the list.
+2. Compare the current element with the target value.
+3. If the current element matches the target value, the search is successful, and you can return the index or perform any desired action.
+4. If the current element does not match the target value, move to the next element in the list.
+5. Repeat steps 2-4 until a match is found or the end of the list is reached.
+6. If the end of the list is reached without finding a match, the search is unsuccessful.
 
 
+Here's an example implementation of linear search in Python:
 
+```js
+def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i  # Return the index of the target if found
+    return -1  # Return -1 if the target is not found
+
+# Example usage:
+my_list = [4, 7, 2, 9, 1, 5]
+target_value = 9
+
+index = linear_search(my_list, target_value)
+if index != -1:
+    print("Target found at index:", index)
+else:
+    print("Target not found in the list.")
+
+```
+
+In this example, we have a list my_list containing some elements, and we want to search for the target value of 9. The linear_search function iterates over each element in the list and checks if it matches the target value. If a match is found, the function returns the index of the target value. Otherwise, it returns -1 to indicate that the target value was not found.
+
+It's worth noting that linear search has a time complexity of **O(n)**, where n is the number of elements in the list. This means that in the worst case, where the target value is at the end of the list or not present at all, linear search would need to iterate through all the elements. If you have a large list and need to perform frequent searches, other more efficient search algorithms like binary search may be preferable.
+
+
+### Binary Search
+
+- Binary search is an efficient search algorithm that works on a sorted list or array. It repeatedly divides the search space in half by comparing the middle element with the target value. Based on the result of the comparison, it narrows down the search to the upper or lower half of the list, eliminating the other half. This process is repeated until the target value is found or the search space is empty.
+
+Here's the step-by-step process for performing binary search:
+
+1. Start with a sorted list or array.
+2. Define the lower bound (start) and upper bound (end) of the search space. Initially, the entire list is the search space, so start = 0 and end = length of the list - 1.
+3. Calculate the middle index of the current search space: middle = (start + end) // 2. The double forward slashes indicate integer division, which ensures that the result is an integer.
+4. Compare the middle element (arr[middle]) with the target value.
+    - If arr[middle] is **equal** to the target value, the search is successful, and you can return the index or perform any desired action.
+    - If arr[middle] is **greater** than the target value, the target value, if it exists, must be in the **lower** half of the search space. Update the upper bound: end = middle - 1, and go back to step 3.
+    - If arr[middle] is **less** than the target value, the target value, if it exists, must be in the **upper** half of the search space. Update the lower bound: start = middle + 1, and go back to step 3.
+5. Repeat steps 3-4 until a match is found or the search space is empty (start > end).
+6. If the search space is empty and the target value is not found, the search is unsuccessful.
+
+Here's an example implementation of binary search in Python:
+
+```python
+def binary_search(arr, target):
+    start = 0
+    end = len(arr) - 1
+
+    while start <= end:
+        middle = (start + end) // 2
+
+        if arr[middle] == target:
+            return middle  # Return the index of the target if found
+        elif arr[middle] < target:
+            start = middle + 1
+        else:
+            end = middle - 1
+
+    return -1  # Return -1 if the target is not found
+
+# Example usage:
+my_list = [1, 2, 4, 5, 7, 9]
+target_value = 7
+
+index = binary_search(my_list, target_value)
+if index != -1:
+    print("Target found at index:", index)
+else:
+    print("Target not found in the list.")
+```
+
+In this example, we have a sorted list `my_list` containing some elements, and we want to search for the target value of `7`. The `binary_search` function maintains the search space by updating the start and end indices based on the comparison with the middle element. It continues dividing the search space until it finds the target value or the search space is empty.
+
+Binary search has a time complexity of O(log n), where n is the number of elements in the list. This makes it much more efficient than linear search, especially for large lists.
+
+### Detailed Explanation of Binary Search with an Example
+
+Suppose we have a sorted list `[1, 2, 4, 5, 7, 9]` and we want to search for the target value of `7`.
+
+1. **Start**: 0, **End**: 5 (length of the list - 1)
+2. Calculate the middle index: `middle = (start + end) // 2 = (0 + 5) // 2 = 2`
+3. Compare `arr[middle]` (which is `4`) with the target value `7`.
+   - Since `4` is less than `7`, we update the **start** index to `middle + 1`, which is `3`.
+4. **Start**: 3, **End**: 5
+5. Calculate the new middle index: `middle = (start + end) // 2 = (3 + 5) // 2 = 4`
+6. Compare `arr[middle]` (which is `7`) with the target value `7`.
+   - We found a match! The search is successful, and we return the index `4` where the target value `7` is found.
+
+In this example, during the first iteration, the middle element `4` is less than the target value `7`. Therefore, we update the start index to `3`, narrowing down the search space to the upper half of the list.
+
+In the second iteration, the middle element `7` matches the target value `7`. Since we have found a match, the algorithm returns the index `4`, indicating the target value's position in the list.
+
+This is the general process of how binary search divides the search space in half and effectively narrows down the range of possible values until it finds the target or concludes that the target is not present in the list.
+
+<!-- time: 38:00 -->
 
