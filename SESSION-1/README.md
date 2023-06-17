@@ -14,7 +14,19 @@
 
 [Worst Case Situation](#Worst-Case-Situation)
 
-[]()
+[Strings](#Strings)
+
+[Mutables & Immutables](#Mutables-&-Immutables)
+
+[Ascii Code](#Ascii-Code)
+
+[SESSION 4](#SESSION-4)
+
+[Linear Search](#Linear-Search)
+
+[Binary Search](#Binary-Search)
+
+[Map Data Structure](#Map-Data-Structure)
 
 # SESSION -1
 
@@ -787,7 +799,7 @@ In this example, the variable `asciiCode` holds the ASCII code `65`, and `String
 These methods allow you to work with ASCII codes and characters in JavaScript, enabling you to perform conversions and manipulate text based on their numeric representations.
 
 
-## SESSION - 4
+## SESSION 4
 
 ### Linear Search 
   
@@ -898,7 +910,7 @@ In the second iteration, the middle element `7` matches the target value `7`. Si
 
 This is the general process of how binary search divides the search space in half and effectively narrows down the range of possible values until it finds the target or concludes that the target is not present in the list.
 
-### Map Data Structure
+## Map Data Structure
 
 Certainly! In JavaScript, there is a built-in data structure called `Map` that allows you to store key-value pairs. It is similar to an object, but with some differences and additional functionalities. Here's an overview of how to use the `Map` data structure in JavaScript:
 
