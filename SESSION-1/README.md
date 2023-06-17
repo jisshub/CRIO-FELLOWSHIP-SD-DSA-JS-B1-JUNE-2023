@@ -1,3 +1,21 @@
+[SESSION-1](#SESSION-1)
+
+[Time Complexity](#Time-Complexity)
+
+[Time and Space Complexity Problems](#Time-and-Space-Complexity-Problems)
+
+[SESSION - 2](#SESSION-2)
+
+[Arrays](#arrays)
+
+[Matrix](#matrix)
+
+[SESSION 3](#session-3)
+
+[Worst Case Situation](#Worst-Case-Situation)
+
+[]()
+
 # SESSION -1
 
 ## Time Complexity
@@ -880,5 +898,114 @@ In the second iteration, the middle element `7` matches the target value `7`. Si
 
 This is the general process of how binary search divides the search space in half and effectively narrows down the range of possible values until it finds the target or concludes that the target is not present in the list.
 
-<!-- time: 38:00 -->
+### Map Data Structure
 
+Certainly! In JavaScript, there is a built-in data structure called `Map` that allows you to store key-value pairs. It is similar to an object, but with some differences and additional functionalities. Here's an overview of how to use the `Map` data structure in JavaScript:
+
+**1. Creating a Map:**
+You can create a new `Map` object using the `Map` constructor without any arguments, or by passing an iterable (like an array) of key-value pairs.
+
+```javascript
+// Creating an empty Map
+const map = new Map();
+
+// Creating a Map with initial key-value pairs
+const mapWithValues = new Map([
+  ['key1', 'value1'],
+  ['key2', 'value2'],
+]);
+```
+
+**2. Adding and Modifying Entries:**
+To add or modify an entry in the `Map`, you can use the `set()` method. If the key already exists, the corresponding value will be updated; otherwise, a new entry will be added.
+
+```javascript
+// Adding a new entry or modifying an existing one
+map.set('key', 'value');
+```
+
+**3. Retrieving Values:**
+You can retrieve the value associated with a key using the `get()` method. If the key doesn't exist, `undefined` will be returned.
+
+```javascript
+const value = map.get('key');
+console.log(value); // Output: 'value'
+```
+
+**4. Checking Existence:**
+To check if a key exists in the `Map`, you can use the `has()` method, which returns a boolean value.
+
+```javascript
+const exists = map.has('key');
+console.log(exists); // Output: true or false
+```
+
+**5. Removing Entries:**
+You can remove an entry from the `Map` using the `delete()` method. It returns `true` if an element with the given key was successfully deleted or `false` if the key was not found.
+
+```javascript
+const deleted = map.delete('key');
+console.log(deleted); // Output: true or false
+```
+
+**6. Iterating Over Entries:**
+The `Map` provides several methods to iterate over its entries, keys, or values.
+
+- `keys()`: Returns an iterator for the keys of the `Map`.
+- `values()`: Returns an iterator for the values of the `Map`.
+- `entries()`: Returns an iterator for the entries (key-value pairs) of the `Map`.
+
+```javascript
+// Iterating over keys
+for (const key of map.keys()) {
+  console.log(key);
+}
+
+// Iterating over values
+for (const value of map.values()) {
+  console.log(value);
+}
+
+// Iterating over entries
+for (const [key, value] of map.entries()) {
+  console.log(key, value);
+}
+```
+
+**7. Size and Clearing:**
+You can obtain the number of entries in a `Map` using the `size` property. To remove all entries from the `Map`, you can use the `clear()` method.
+
+```javascript
+console.log(map.size); // Output: number of entries
+
+map.clear(); // Removes all entries from the Map
+```
+
+To modify multiple elements in a `Map` using key-value entries, you can use the `set()` method in a loop. Here's the syntax to modify map elements using multiple key-value entries:
+
+**8. Modifying map with multiple entries:**
+
+```javascript
+const map = new Map([
+  ['key1', 'value1'],
+  ['key2', 'value2'],
+  ['key3', 'value3']
+]);
+
+// Array of key-value entries for modification
+const entriesToModify = [
+  ['key1', 'new value 1'],
+  ['key2', 'new value 2']
+];
+
+// Modifying map elements using the entries
+for (const [key, value] of entriesToModify) {
+  map.set(key, value);
+}
+```
+
+In the example above, we have an existing `Map` with some initial key-value pairs. We define an array `entriesToModify` that contains the new key-value entries we want to use for modification. Then, we loop over each entry using destructuring assignment to extract the key and value. Within the loop, we call `set()` on the `Map` instance and pass the key and new value to modify the corresponding element.
+
+After executing the loop, the specified elements in the `Map` will be modified with the new values. You can access them using the respective keys.
+
+That covers the basics of using the `Map` data structure in JavaScript. It's a versatile tool for storing key-value pairs and provides efficient methods for data manipulation and retrieval.
