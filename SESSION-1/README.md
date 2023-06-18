@@ -28,6 +28,14 @@
 
 [Map Data Structure](#Map-Data-Structure)
 
+[SESSION 5](#session-5)
+
+[Set](#set)
+
+[Recursion](#recursion)
+
+[Time and Space Complexity for Recursion](#Time-and-Space-Complexity-for-Recursion)
+
 # SESSION -1
 
 ## Time Complexity
@@ -1021,3 +1029,222 @@ In the example above, we have an existing `Map` with some initial key-value pair
 After executing the loop, the specified elements in the `Map` will be modified with the new values. You can access them using the respective keys.
 
 That covers the basics of using the `Map` data structure in JavaScript. It's a versatile tool for storing key-value pairs and provides efficient methods for data manipulation and retrieval.
+
+# SESSION 5
+
+## Set
+
+In JavaScript, a Set is a built-in object that allows you to store unique values of any type. Unlike arrays, Sets do not have a specific order, and each value can only occur once within the Set. This makes Sets useful when you need to store a collection of unique elements.
+
+Here's an example of how you can create a Set in JavaScript:
+
+```javascript
+const mySet = new Set();
+```
+
+To add values to the Set, you can use the `add()` method. Let's add some values to the Set:
+
+```javascript
+mySet.add(1);
+mySet.add('Hello');
+mySet.add(true);
+```
+
+Now, let's see how you can check the size of the Set and whether it contains a specific value:
+
+```javascript
+console.log(mySet.size); // Output: 3
+
+console.log(mySet.has('Hello')); // Output: true
+console.log(mySet.has(2)); // Output: false
+```
+
+To remove a value from the Set, you can use the `delete()` method:
+
+```javascript
+mySet.delete(true);
+```
+
+To clear the entire Set, you can use the `clear()` method:
+
+```javascript
+mySet.clear();
+```
+
+Sets also provide methods to retrieve the values stored in them. Here's an example:
+
+```javascript
+const mySet = new Set([1, 2, 3, 4, 5]);
+
+// Iterate over the Set using the forEach() method
+mySet.forEach(value => {
+  console.log(value);
+});
+
+// Convert the Set to an array using the spread operator
+const setToArray = [...mySet];
+console.log(setToArray); // Output: [1, 2, 3, 4, 5]
+```
+
+Now, let's discuss how Sets differ from arrays and objects.
+
+1. Uniqueness: Sets store unique values, whereas arrays can contain duplicate values. Objects, on the other hand, are key-value pairs and allow duplicate keys.
+
+2. Order: Sets do not have a specific order, and the order of elements is not guaranteed. Arrays maintain the order of elements, while objects do not guarantee the order of properties.
+
+3. Accessing Values: Sets do not provide direct access to specific values by index, unlike arrays. Instead, you can iterate over the Set or convert it to an array. Objects, on the other hand, allow you to access values using specific keys.
+
+### Example Problem 
+
+Problem: Given an array of numbers, find and return the unique numbers using a Set.
+
+For example, if the input array is `[1, 2, 3, 2, 4, 1, 5]`, the function should return `[1, 2, 3, 4, 5]`.
+
+To solve this problem, you can create a Set and iterate over the input array. Add each element to the Set, and since Sets only store unique values, you will end up with the unique numbers. Finally, convert the Set back to an array and return the result.
+
+Here's the implementation of the `findUniqueNumbers` function:
+
+```javascript
+function findUniqueNumbers(arr) {
+  const uniqueSet = new Set(arr);
+  const uniqueArray = Array.from(uniqueSet);
+  return uniqueArray;
+}
+
+// Testing the function
+const numbers = [1, 2, 3, 2, 4, 1, 5];
+const uniqueNumbers = findUniqueNumbers(numbers);
+console.log(uniqueNumbers); // Output: [1, 2, 3, 4, 5]
+```
+
+In the solution above, we create a Set `uniqueSet` using the input array `arr`. Then, we convert the Set back to an array `uniqueArray` using the `Array.from()` method. Finally, we return the `uniqueArray`.
+
+
+## Recursion
+
+Certainly! Recursion is a powerful programming technique where a function calls itself repeatedly until it reaches a specific condition, known as the base case. Recursion allows you to solve complex problems by breaking them down into smaller, more manageable subproblems.
+
+To illustrate recursion in JavaScript, let's use an example of calculating the factorial of a number. The factorial of a non-negative integer `n`, denoted as `n!`, is the product of all positive integers less than or equal to `n`.
+
+Here's a recursive implementation of the factorial function in JavaScript:
+
+```javascript
+function factorial(n) {
+  // Base case: factorial of 0 or 1 is 1
+  if (n === 0 || n === 1) {
+    return 1;
+  }
+
+  // Recursive case: multiply current number with factorial of (n-1)
+  return n * factorial(n - 1);
+}
+
+// Testing the function
+console.log(factorial(5)); // Output: 120
+```
+
+In the code above, the `factorial` function takes an integer `n` as an argument. Inside the function, we define two cases:
+
+1. Base case: If `n` is 0 or 1, we return 1 because the factorial of 0 or 1 is 1.
+
+2. Recursive case: If `n` is greater than 1, we recursively call the `factorial` function with `n - 1` and multiply the result by `n`.
+
+By recursively calling the `factorial` function with smaller values of `n`, we gradually break down the problem until we reach the base case.
+
+It's important to note a few key points about recursion:
+
+1. Base Case: Recursion must have a base case to stop the recursive calls. Without a base case, the function will continue calling itself indefinitely, leading to a stack overflow error.
+
+2. Recursive Step: In each recursive call, the problem is reduced into a smaller subproblem that brings it closer to the base case.
+
+3. Call Stack: Recursive calls are added to the call stack, which keeps track of the function calls. The call stack is important as it determines the order of execution and allows the functions to return back to their respective callers.
+
+4. Termination: To ensure that recursion terminates, the problem size must decrease with each recursive call. If the problem size remains the same or increases, recursion may lead to infinite recursion.
+
+
+### Example 2 - Array Sum Using Recursion
+
+Certainly! Let's consider a classic example of calculating the sum of an array of numbers using recursion. The problem is to write a recursive function that takes an array of numbers as input and returns the sum of all the numbers in the array.
+
+Here's the recursive implementation of the sum function in JavaScript:
+
+```javascript
+function sumArray(arr) {
+  // Base case: If the array is empty, return 0
+  if (arr.length === 0) {
+    return 0;
+  }
+
+  // Recursive case: Return the first element plus the sum of the rest of the array
+  return arr[0] + sumArray(arr.slice(1));
+}
+
+// Testing the function
+const numbers = [1, 2, 3, 4, 5];
+console.log(sumArray(numbers)); // Output: 15
+```
+
+Let's go through the code step by step to understand the recursion:
+
+1. The `sumArray` function takes an array `arr` as input.
+
+2. Base Case: We start by checking if the array is empty (`arr.length === 0`). If it is, we have reached the base case, and we return 0 because the sum of an empty array is 0.
+
+3. Recursive Case: If the array is not empty, we access the first element of the array using `arr[0]`. We then recursively call the `sumArray` function with the rest of the array (`arr.slice(1)`), which represents all elements except the first one.
+
+4. In each recursive call, the function breaks down the problem into a smaller subproblem by considering the first element and calculating the sum of the remaining elements.
+
+5. The recursive calls continue until the base case is reached. At that point, the recursion starts to unwind, and the intermediate sums are computed and returned.
+
+6. Finally, the recursive calls return their values back up the call stack, and the final sum is obtained by summing the first element with the sums of the rest of the array.
+
+In the provided example, the function calculates the sum of the array `[1, 2, 3, 4, 5]`, which results in `15`. Each recursive call reduces the problem size by removing the first element from the array until the base case of an empty array is reached.
+
+Recursion allows you to solve complex problems by breaking them down into simpler subproblems and using the same problem-solving approach on each subproblem. It's important to define the base case(s) that will terminate the recursion and ensure progress is made toward the base case in each recursive call.
+
+Certainly! Let's analyze the time complexity and space complexity of the array sum problem implemented using recursion. Here's the code snippet again for reference:
+
+```javascript
+function sumArray(arr) {
+  // Base case: If the array is empty, return 0
+  if (arr.length === 0) {
+    return 0;
+  }
+
+  // Recursive case: Return the first element plus the sum of the rest of the array
+  return arr[0] + sumArray(arr.slice(1));
+}
+```
+
+### Time and Space Complexity for Recursion
+
+
+#### Time Complexity:
+
+- In each recursive call, we perform the following operations:
+  - Accessing the first element of the array: O(1)
+  - Calling `arr.slice(1)` to create a new array with all elements except the first one: O(n), where n is the length of the array
+
+- The recursion continues until the base case is reached, with the problem size decreasing by 1 in each recursive call.
+
+- Therefore, the time complexity of the recursive solution can be expressed as a recurrence relation:
+  - T(n) = T(n-1) + O(1) + O(n)
+
+- Simplifying the recurrence relation, we can conclude that the time complexity of the array sum problem using recursion is O(n^2), where n is the length of the input array.
+
+#### Space Complexity:
+
+- In each recursive call, we create a new array by calling `arr.slice(1)` to exclude the first element from the array. This creates a copy of the array, resulting in additional space usage.
+
+- The space complexity of the recursive solution is determined by the maximum depth of the recursion, as each recursive call creates a new stack frame.
+
+- In the worst case, the recursion depth is equal to the length of the input array, as each recursive call reduces the problem size by 1.
+
+- Therefore, the space complexity of the array sum problem using recursion is O(n), where n is the length of the input array.
+
+To summarize:
+
+- Time complexity: O(n^2), where n is the length of the input array
+- Space complexity: O(n), where n is the length of the input array
+
+It's important to note that the time and space complexity can be improved by using iterative approaches such as a simple loop, which would have a linear time complexity of O(n) and constant space complexity.
