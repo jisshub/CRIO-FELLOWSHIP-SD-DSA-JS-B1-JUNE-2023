@@ -1,8 +1,8 @@
-[SESSION-1](#SESSION-1)
+- [SESSION-1](#SESSION-1)
 
-[Time Complexity](#Time-Complexity)
+  - [Time Complexity](#Time-Complexity)
 
-[Time and Space Complexity Problems](#Time-and-Space-Complexity-Problems)
+  - [Time and Space Complexity Problems](#Time-and-Space-Complexity-Problems)
 
 [SESSION - 2](#SESSION-2)
 
@@ -35,6 +35,11 @@
 [Recursion](#recursion)
 
 [Time and Space Complexity for Recursion](#Time-and-Space-Complexity-for-Recursion)
+
+[SESSION 6](#session-6)
+
+[Modular Operator](#modular-operator)
+
 
 # SESSION -1
 
@@ -1248,3 +1253,41 @@ To summarize:
 - Space complexity: O(n), where n is the length of the input array
 
 It's important to note that the time and space complexity can be improved by using iterative approaches such as a simple loop, which would have a linear time complexity of O(n) and constant space complexity.
+
+# SESSION 6
+
+## Modular Operator
+
+If a % b = c, that means c is the remainder when a is divided by b.
+
+Eg: 8%5 = 3
+
+
+## Prime Numbers
+
+- write a program to check if a number is prime or not
+
+```js
+function isPrime(num) {
+    if (num < 2) return false;
+    for (let i = 2; i < num; i++) {
+        if (num % i == 0) return false;
+    }
+    return true;
+}
+
+console.log(isPrime(2));
+console.log(isPrime(3));
+console.log(isPrime(4));
+console.log(isPrime(5));
+console.log(isPrime(17));
+```
+
+// Time complexity: **O(n)**
+
+// Space complexity: **O(1)**
+
+
+
+
+
