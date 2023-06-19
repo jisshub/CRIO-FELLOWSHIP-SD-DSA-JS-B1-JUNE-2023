@@ -4,41 +4,41 @@
 
   - [Time and Space Complexity Problems](#Time-and-Space-Complexity-Problems)
 
-[SESSION - 2](#SESSION-2)
+- [SESSION - 2](#SESSION-2)
 
-[Arrays](#arrays)
+  - [Arrays](#arrays)
 
-[Matrix](#matrix)
+  - [Matrix](#matrix)
 
-[SESSION 3](#session-3)
+- [SESSION 3](#session-3)
 
-[Worst Case Situation](#Worst-Case-Situation)
+  - [Worst Case Situation](#Worst-Case-Situation)
 
-[Strings](#Strings)
+  - [Strings](#Strings)
 
-[Mutables & Immutables](#Mutables-&-Immutables)
+  - [Mutables & Immutables](#Mutables-&-Immutables)
 
-[Ascii Code](#Ascii-Code)
+  - [Ascii Code](#Ascii-Code)
 
-[SESSION 4](#SESSION-4)
+- [SESSION 4](#SESSION-4)
 
-[Linear Search](#Linear-Search)
+  - [Linear Search](#Linear-Search)
 
-[Binary Search](#Binary-Search)
+  - [Binary Search](#Binary-Search)
 
-[Map Data Structure](#Map-Data-Structure)
+  - [Map Data Structure](#Map-Data-Structure)
 
-[SESSION 5](#session-5)
+- [SESSION 5](#session-5)
 
-[Set](#set)
+  - [Set](#set)
 
-[Recursion](#recursion)
+  - [Recursion](#recursion)
 
-[Time and Space Complexity for Recursion](#Time-and-Space-Complexity-for-Recursion)
+  - [Time and Space Complexity for Recursion](#Time-and-Space-Complexity-for-Recursion)
 
-[SESSION 6](#session-6)
+- [SESSION 6](#session-6)
 
-[Modular Operator](#modular-operator)
+   - [Modular Operator](#modular-operator)
 
 
 # SESSION -1
