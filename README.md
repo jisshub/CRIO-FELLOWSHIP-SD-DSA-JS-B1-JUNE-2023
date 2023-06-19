@@ -40,6 +40,11 @@
 
    - [Modular Operator](#modular-operator)
 
+   - [Prime Numbers](#prime-numbers)
+   
+   - [GCD / HCF](#gcd-/-hcf)
+   - [Understanding GCD and HCF in Mathematics with JavaScript Examples](#Understanding-GCD-and-HCF-in-Mathematics-with-JavaScript-Examples) 
+  
 
 # SESSION -1
 
@@ -1288,6 +1293,99 @@ console.log(isPrime(17));
 // Space complexity: **O(1)**
 
 
+## GCD / HCF
 
+GCD - Greatest Common Divisor
+HCF - Highest Common Factor
 
+The Greatest Common Divisor (GCD) or Highest Common Factor (HCF) of two or more numbers is the largest positive integer that divides each of the given numbers without leaving a remainder.
 
+Here are the important points and keywords related to GCD and HCF:
+
+1. Divisor: A divisor is a number that divides another number without leaving a remainder. For example, the divisors of 12 are 1, 2, 3, 4, 6, and 12.
+
+2. Common Divisors: Common divisors are the divisors that are common to two or more numbers. For example, the common divisors of 12 and 18 are 1, 2, 3, and 6.
+
+3. Greatest Common Divisor (GCD) or Highest Common Factor (HCF): The GCD or HCF is the largest number among the common divisors of the given numbers. It represents the highest factor that the given numbers have in common.
+
+Now, let's see some examples to better understand how GCD/HCF works:
+
+### Example 1:
+Find the GCD/HCF of 24 and 36.
+
+Step 1: List down the divisors of both numbers.
+   - The divisors of 24: 1, 2, 3, 4, 6, 8, 12, 24
+   - The divisors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36
+
+Step 2: Identify the common divisors.
+   - The common divisors are: 1, 2, 3, 4, 6, 12
+
+Step 3: Determine the GCD/HCF.
+   - The GCD/HCF is 12, as it is the largest number among the common divisors.
+
+Therefore, the GCD/HCF of 24 and 36 is 12.
+
+### Example 2:
+Find the GCD/HCF of 48, 60, and 84.
+
+Step 1: List down the divisors of all three numbers.
+   - The divisors of 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48
+   - The divisors of 60: 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60
+   - The divisors of 84: 1, 2, 3, 4, 6, 7, 12, 14, 21, 28, 42, 84
+
+Step 2: Identify the common divisors.
+   - The common divisors are: 1, 2, 3, 4, 6, 12
+
+Step 3: Determine the GCD/HCF.
+   - The GCD/HCF is 12, as it is the largest number among the common divisors.
+
+Therefore, the GCD/HCF of 48, 60, and 84 is 12.
+
+### Understanding GCD and HCF in Mathematics with JavaScript Examples
+
+Certainly! In JavaScript, you can write functions to calculate the GCD/HCF using various approaches, such as the Euclidean algorithm. Here's an example of how you can implement GCD/HCF calculation in JavaScript:
+
+```javascript
+// Function to calculate the GCD/HCF of two numbers
+function calculateGCD(a, b) {
+  // Using the Euclidean algorithm
+  while (b !== 0) {
+    var remainder = a % b;
+    a = b;
+    b = remainder;
+  }
+  return a;
+}
+
+// Example usage
+var num1 = 24;
+var num2 = 36;
+var gcd = calculateGCD(num1, num2);
+
+console.log("The GCD of " + num1 + " and " + num2 + " is: " + gcd);
+```
+
+- The `calculateGCD()` function is defined to calculate the GCD/HCF of two numbers (`a` and `b`).
+
+- Inside the function, the Euclidean algorithm is used to calculate the GCD/HCF. The algorithm iteratively finds the remainder when `a` is divided by `b` and assigns the value of `b` to `a` and the remainder to `b`. This process continues until `b` becomes zero, at which point `a` holds the GCD/HCF value.
+
+- The function returns the GCD/HCF value stored in `a`.
+
+- In the example usage section:
+  - `num1` is assigned the value 24, representing the first number.
+  - `num2` is assigned the value 36, representing the second number.
+  - The `calculateGCD()` function is called with `num1` and `num2` as arguments, and the result is stored in the `gcd` variable.
+
+- The result is logged to the console using `console.log()`. It displays a message that includes the original numbers and the calculated GCD/HCF.
+
+To better understand how the program works, let's run it with the provided example inputs:
+
+1. The `calculateGCD()` function is called with `a = 24` and `b = 36`.
+2. Inside the function, the Euclidean algorithm is applied as follows:
+   - In the first iteration: `remainder = 24 % 36 = 24`, `a = 36`, `b = 24`.
+   - In the second iteration: `remainder = 36 % 24 = 12`, `a = 24`, `b = 12`.
+   - In the third iteration: `remainder = 24 % 12 = 0`, `a = 12`, `b = 0`.
+3. Since `b` becomes zero, the loop stops, and the value of `a` (12) is returned as the GCD/HCF.
+4. The final result is logged to the console: "The GCD of 24 and 36 is: 12".
+
+This demonstrates how the program calculates the GCD/HCF using the Euclidean algorithm.
