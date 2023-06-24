@@ -1389,3 +1389,14 @@ To better understand how the program works, let's run it with the provided examp
 4. The final result is logged to the console: "The GCD of 24 and 36 is: 12".
 
 This demonstrates how the program calculates the GCD/HCF using the Euclidean algorithm.
+
+## SESSION 7
+
+### DSA Pattern - Matrix
+
+https://www.youtube.com/watch?v=OX4NPjicebM&t=222s
+
+
+## SESSION 9
+
+
