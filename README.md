@@ -1401,6 +1401,9 @@ https://www.youtube.com/watch?v=OX4NPjicebM&t=222s
 
 ## SESSION 9
 
+https://chat.openai.com/share/1a237966-0e1d-4539-a246-81497bb4be6d
+
+
 ### Two Pointer Pattern
 
 Certainly! The two-pointer pattern is a common technique used in data structures and algorithms that involves using two-pointers or references to traverse a data structure or solve a problem efficiently. This pattern is particularly useful when dealing with arrays, linked lists, or strings.
