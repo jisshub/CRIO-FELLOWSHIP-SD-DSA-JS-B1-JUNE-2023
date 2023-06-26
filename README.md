@@ -44,7 +44,9 @@
    
    - [GCD / HCF](#gcd-/-hcf)
    - [Understanding GCD and HCF in Mathematics with JavaScript Examples](#Understanding-GCD-and-HCF-in-Mathematics-with-JavaScript-Examples) 
-  
+
+- [SESSION 9](#session-9)
+  - [Two Pointer Pattern](two-pointer-pattern)
 
 # SESSION -1
 
@@ -1399,4 +1401,109 @@ https://www.youtube.com/watch?v=OX4NPjicebM&t=222s
 
 ## SESSION 9
 
+### Two Pointer Pattern
+
+Certainly! The two-pointer pattern is a common technique used in data structures and algorithms that involves using two-pointers or references to traverse a data structure or solve a problem efficiently. This pattern is particularly useful when dealing with arrays, linked lists, or strings.
+
+The basic idea behind the two-pointer pattern is to use two-pointers to traverse the data structure simultaneously. These pointers can start at different positions or move at different speeds based on the problem requirements. By manipulating the pointers and their positions, you can often solve problems with optimal time complexity, typically O(n), where n is the size of the data structure.
+
+Here are a few common scenarios where the two-pointer pattern can be applied:
+
+1. **Finding a Pair with a Target Sum**: Given a sorted array, you may need to find two elements that sum up to a specific target value. You can initialize two pointers, one at the beginning (left) and one at the end (right) of the array. Compare the sum of the elements pointed by the two pointers with the target sum. If it's equal, you have found the pair. If it's less, move the left pointer to the right. If it's greater, move the right pointer to the left. Repeat until you find the pair or the pointers meet.
+
+2. **Checking for Palindromes**: When checking if a string is a palindrome (reads the same forwards and backward), you can use two pointers starting from opposite ends of the string. Compare the characters at the pointers, moving inward. If all the characters match, the string is a palindrome.
+
+3. **Detecting Cycles in Linked Lists**: To detect cycles in a linked list, you can use two pointers, one moving faster than the other. Start both pointers at the head of the linked list. Move the slow pointer one step at a time and the fast pointer two steps at a time. If there is a cycle, the fast pointer will eventually catch up to the slow pointer.
+
+These are just a few examples, but the two-pointer pattern can be applied to various other problems as well. It is a powerful technique that allows you to optimize the time complexity of your solution by avoiding unnecessary iterations or nested loops.
+
+Remember, when using the two-pointer pattern, it's important to handle edge cases properly, ensure that the pointers are within the valid range, and be mindful of corner cases specific to the problem you're solving.
+
+I hope this explanation helps you understand the two-pointer pattern in data structures and algorithms! Let me know if you have any further questions.
+
+
+Certainly! Let's take the example of finding a pair with a target sum in a sorted array using the two-pointer pattern.
+
+Problem: Given a sorted array of integers and a target sum, find a pair of elements in the array that add up to the target sum. If such a pair exists, return their indices. Otherwise, return -1.
+
+Here's an example solution using the two-pointer pattern:
+
+```python
+def find_pair_with_target_sum(nums, target):
+    left = 0                   # Initialize the left pointer to the start of the array
+    right = len(nums) - 1      # Initialize the right pointer to the end of the array
+    
+    while left < right:
+        current_sum = nums[left] + nums[right]
+        
+        if current_sum == target:             # If the current sum equals the target
+            return [left, right]              # Return the indices of the pair
+        
+        elif current_sum < target:            # If the current sum is less than the target
+            left += 1                         # Move the left pointer to the right
+            
+        else:                                 # If the current sum is greater than the target
+            right -= 1                        # Move the right pointer to the left
+    
+    return -1                                # No pair found, return -1
+
+```
+
+Let's walk through the code:
+
+1. We initialize the left pointer to the start of the array (index 0) and the right pointer to the end of the array (index len(nums) - 1).
+2. We enter a while loop that continues as long as the left pointer is less than the right pointer.
+3. Inside the loop, we calculate the current sum of the elements pointed by the left and right pointers.
+4. If the current sum is equal to the target, we have found the pair. We return the indices [left, right].
+5. If the current sum is less than the target, it means we need a larger element to reach the target. So, we increment the left pointer by 1 to move to the next element.
+6. If the current sum is greater than the target, it means we need a smaller element to reach the target. So, we decrement the right pointer by 1 to move to the previous element.
+7. We repeat steps 3-6 until we find the pair or the pointers meet (left >= right).
+8. If we exit the loop without finding a pair, we return -1 to indicate that no pair exists with the target sum.
+
+Let's test the function with an example:
+
+```python
+nums = [2, 5, 7, 10, 12]
+target = 17
+print(find_pair_with_target_sum(nums, target))
+```
+
+Output:
+```
+[1, 4]
+```
+
+In this example, the pair [5, 12] has a sum of 17, and their indices in the array are 1 and 3, respectively. The function correctly returns [1, 3].
+
+### Detailed Explanation With Example
+
+Given:
+```
+nums = [2, 5, 7, 10, 12]
+target = 17
+```
+
+1. Initialize the left pointer `left` to the start of the array (index 0) and the right pointer `right` to the end of the array (index `len(nums) - 1`).
+
+   `left = 0` and `right = 4`
+
+2. Enter the while loop since `left` (0) is less than `right` (4).
+
+3. Calculate the current sum by adding the elements pointed by the left and right pointers: `nums[left] + nums[right] = 2 + 12 = 14`.
+
+   Since the current sum (14) is less than the target (17), we need a larger element to reach the target.
+
+4. Increment the left pointer `left` by 1 to move to the next element.
+
+   `left = 1`
+
+5. Repeat step 3: `nums[left] + nums[right] = 5 + 12 = 17`.
+
+   The current sum (17) is equal to the target (17), indicating that we have found the pair. Return the indices `[left, right]`.
+
+   The function returns `[1, 3]`, indicating that the pair with the target sum is at indices 1 and 3.
+
+   Note: In some cases, the solution might return multiple pairs if they satisfy the condition. However, in this example, we assume a unique pair is expected.
+
+The function correctly returns `[1, 3]`, indicating that the pair `[5, 12]` has a sum of 17 and is found at indices 1 and 3 in the array.
 
