@@ -51,6 +51,7 @@
 
 - [SESSION 10](#session-10)
   - [Merge Intervals Pattern](#Merge-Intervals-Pattern)
+  - [HashMap](#hashmap)
 
 # SESSION -1
 
@@ -1848,6 +1849,7 @@ Step 4: Check for overlap and merge if necessary.
 Step 6: Return the merged intervals.
 - The final merged intervals are [[1, 7], [8, 10], [11, 18]].
 
-By following this step-by-step process, we
+By following this step-by-step process, we successfully merged the overlapping intervals in the example. The merge intervals pattern allows us to consolidate and merge overlapping intervals efficiently.
 
- successfully merged the overlapping intervals in the example. The merge intervals pattern allows us to consolidate and merge overlapping intervals efficiently.
+## HashMap
+
