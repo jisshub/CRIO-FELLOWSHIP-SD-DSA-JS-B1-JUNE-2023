@@ -1790,7 +1790,7 @@ Step 6: Return the merged intervals.
 By following this step-by-step process, we successfully merged the overlapping intervals in the example. The merge intervals pattern allows us to consolidate and merge overlapping intervals efficiently.
 
 
-### Step by Step With Different Set of Intervalsd
+### Step by Step With Different Set of Intervals
 
 Certainly! Let's go through the merge intervals pattern step by step using a new set of intervals as an example.
 
@@ -1853,3 +1853,5 @@ By following this step-by-step process, we successfully merged the overlapping i
 
 ## HashMap
 
+
+https://chat.openai.com/share/6989ef88-db3f-4624-9fe2-f005da19e39e
