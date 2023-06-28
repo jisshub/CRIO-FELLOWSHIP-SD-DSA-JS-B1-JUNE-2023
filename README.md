@@ -46,7 +46,11 @@
    - [Understanding GCD and HCF in Mathematics with JavaScript Examples](#Understanding-GCD-and-HCF-in-Mathematics-with-JavaScript-Examples) 
 
 - [SESSION 9](#session-9)
-  - [Two Pointer Pattern](two-pointer-pattern)
+  - [Two Pointer Pattern](#two-pointer-pattern)
+  - [Sliding Window Pattern](#sliding-window-pattern)
+
+- [SESSION 10](#session-10)
+  - [Merge Intervals Pattern](#Merge-Intervals-Pattern)
 
 # SESSION -1
 
@@ -1510,3 +1514,340 @@ target = 17
 
 The function correctly returns `[1, 3]`, indicating that the pair `[5, 12]` has a sum of 17 and is found at indices 1 and 3 in the array.
 
+## Sliding Window Pattern
+
+Of course! I'd be happy to explain the sliding window pattern concept to you in a detailed and understandable way.
+
+The sliding window pattern is a commonly used technique in algorithm design, particularly in solving problems that involve arrays or strings. It's a way of efficiently solving problems by maintaining a "window" of elements within the array or string and moving that window iteratively through the data.
+
+To better understand the concept, let's start with a simple example. Imagine you have an array of numbers, and you're tasked with finding the maximum sum of a subarray of a fixed size `k`. For example, given the array `[2, 4, 1, 5, 6, 8]` and `k = 3`, we want to find the subarray with three elements that has the maximum sum.
+
+One straightforward approach would be to consider all possible subarrays of size `k` and calculate their sums. However, this would be inefficient, as it would require nested loops and result in a time complexity of O(n * k), where n is the length of the array.
+
+The sliding window pattern offers a more efficient solution. Here's how it works:
+
+1. Start by initializing two pointers, `left` and `right`, both pointing to the beginning of the array.
+2. Maintain a variable, let's call it `windowSum`, to keep track of the sum of the current window.
+3. Move the `right` pointer to the right `k` times while updating `windowSum` by adding the value at the `right` pointer.
+4. At this point, you have your first window sum. You can set it as the maximum sum found so far.
+5. Now, you need to start moving the window. To do this, increment the `left` pointer by one and decrement `windowSum` by the value at the `left` pointer.
+6. Move the `right` pointer to the right again and add the value at that position to `windowSum`.
+7. Compare `windowSum` with the current maximum sum. If it's larger, update the maximum sum.
+8. Repeat steps 5-7 until the `right` pointer reaches the end of the array.
+
+Let's walk through the example to see the sliding window pattern in action:
+
+1. Initialize `left = 0`, `right = 0`, and `windowSum = 0`.
+2. Move the `right` pointer `k` times: `right = 0` to `right = 2`. Update `windowSum` accordingly: 2 + 4 + 1 = 7.
+3. Set the current maximum sum as `windowSum`: maxSum = 7.
+4. Increment `left` by one and decrement `windowSum` by the value at `left`: 7 - 2 = 5.
+5. Move the `right` pointer to the right again: `right = 3`. Add the value at `right` to `windowSum`: 5 + 5 = 10.
+6. Compare `windowSum` (10) with the current maximum sum (7). Since it's larger, update `maxSum` to 10.
+7. Repeat steps 5-7 until the `right` pointer reaches the end of the array.
+
+By the end of this process, the maximum sum will be stored in `maxSum`, which in this case is 10. The time complexity of this algorithm is O(n), where n is the length of the array, as we only iterate through the array once.
+
+The sliding window pattern is not limited to finding maximum sums; it can be applied to various other problems, such as finding minimum sums, counting distinct elements, or finding longest substrings with
+
+ specific properties. The idea remains the same: maintaining a window and efficiently updating it as you move through the data.
+
+I hope this explanation helps you understand the sliding window pattern. If you have any further questions, feel free to ask!
+
+```js
+def find_subarray_with_sum(arr, target_sum):
+    left = 0              # Step 1: Initialize the variables.
+    right = 0
+    window_sum = 0
+
+    while right < len(arr):   # Step 2: Move the right pointer to the right until the window sum exceeds or equals the target sum.
+        window_sum += arr[right]
+
+        while window_sum > target_sum:   # Step 3: Adjust the window size and update windowSum based on the current sum.
+            window_sum -= arr[left]
+            left += 1
+
+        if window_sum == target_sum:   # Step 3 (continued): If the window sum is equal to the target sum, we have found the subarray.
+            return [left, right]
+
+        right += 1   # Move the right pointer to the next element.
+
+    return -1   # Step 4: Handle the case where no subarray with the target sum is found.
+```
+
+Certainly! Let's go through the `find_subarray_with_sum` function by passing values into the variables using the example I mentioned earlier.
+
+```python
+arr = [28, 30, 32, 29, 33, 31, 28]
+target_sum = 92
+
+# Initializing the variables
+left = 0
+right = 0
+window_sum = 0
+
+# Moving the right pointer until the window sum exceeds or equals the target sum
+window_sum += arr[right]  # window_sum = 0 + 28 = 28
+right += 1
+
+# Adjusting the window size and updating the window sum
+window_sum += arr[right]  # window_sum = 28 + 30 = 58
+right += 1
+
+window_sum += arr[right]  # window_sum = 58 + 32 = 90
+right += 1
+
+window_sum += arr[right]  # window_sum = 90 + 29 = 119
+right += 1
+
+# Adjusting the window size and updating the window sum
+window_sum -= arr[left]  # window_sum = 119 - 28 = 91
+left += 1
+
+window_sum += arr[right]  # window_sum = 91 + 33 = 124
+right += 1
+
+# Adjusting the window size and updating the window sum
+window_sum -= arr[left]  # window_sum = 124 - 30 = 94
+left += 1
+
+# We've reached the end of the array and haven't found a subarray with the target sum (92)
+# Return -1 to indicate no such subarray exists
+result = -1
+```
+
+In this example, we can see how the `left` and `right` pointers are adjusted and the `window_sum` is updated based on the array values and target sum. The algorithm moves the pointers and updates the sum until it either finds a subarray with the target sum or reaches the end of the array.
+
+
+### Case in which we found a subarray
+
+Certainly! Let's consider a similar problem where we want to find a subarray with a target sum, but this time we'll modify the example so that a subarray with the target sum does exist.
+
+Problem: Given an array of numbers and a target sum, find a subarray that sums up to the target sum. Return the starting and ending indices of the subarray if found, or return -1 if no such subarray exists.
+
+Let's use the following array: [4, 2, 7, 10, 5, 1, 3, 6] and set the target sum to 15.
+
+Using the sliding window pattern, we can find a subarray that sums up to the target sum in the following steps:
+
+Step 1: Initialize the variables.
+- Set the left pointer, `left`, to 0, representing the start of the window.
+- Set the right pointer, `right`, to 0, also pointing to the start of the window.
+- Initialize the `window_sum` variable to 0.
+
+Step 2: Move the right pointer to the right until the window sum exceeds or equals the target sum.
+- We start with `right = 0` and `window_sum = 0`.
+- Add the value at index `right` to `window_sum`: 0 + 4 = 4.
+- Since `window_sum` (4) is less than the target sum (15), we move the `right` pointer to the next number.
+
+Step 2 (continued): The `right` pointer moves to the next number.
+- Add the value at index `right` to `window_sum`: 4 + 2 = 6.
+- Since `window_sum` (6) is still less than the target sum (15), we move the `right` pointer again.
+
+Step 2 (continued): The `right` pointer moves to the next number.
+- Add the value at index `right` to `window_sum`: 6 + 7 = 13.
+- Since `window_sum` (13) is still less than the target sum (15), we move the `right` pointer again.
+
+Step 2 (continued): The `right` pointer moves to the next number.
+- Add the value at index `right` to `window_sum`: 13 + 10 = 23.
+- Now, `window_sum` (23) is greater than the target sum (15), so we need to adjust the window size.
+
+Step 3: Adjust the window size and update `window_sum` based on the current sum.
+- Since `window_sum` (23) is greater than the target sum (15), we move the `left` pointer to the right and subtract the value at that position from `window_sum`.
+- Subtract the value at index `left` from `window_sum`: 23 - 4 = 19.
+- Move the `left` pointer to the next number.
+
+Step 3 (continued): The `right` pointer moves to the next number.
+- Add the value at index `right` to `window_sum`: 19 + 5 = 24.
+- Since `window_sum` (24) is greater than the target sum (15), we need to adjust the window size again.
+
+Step 3 (continued): Adjust the window size by moving the `left` pointer.
+- Subtract the value at index `left` from `window_sum`: 24 - 2 = 22.
+- Move the `left` pointer to the next number.
+
+Step 3 (continued): The `right` pointer moves to the next number.
+- Add the value at index `right` to `window_sum`: 22 + 1 = 23.
+
+
+- Since `window_sum` (23) is still less than the target sum (15), we move the `right` pointer again.
+
+Step 3 (continued): The `right` pointer moves to the next number.
+- Add the value at index `right` to `window_sum`: 23 + 3 = 26.
+- Now, `window_sum` (26) is greater than the target sum (15), so we need to adjust the window size.
+
+Step 3 (continued): Adjust the window size by moving the `left` pointer.
+- Subtract the value at index `left` from `window_sum`: 26 - 7 = 19.
+- Move the `left` pointer to the next number.
+
+Step 3 (continued): The `right` pointer moves to the next number.
+- Add the value at index `right` to `window_sum`: 19 + 6 = 25.
+- Now, `window_sum` (25) is greater than the target sum (15), so we need to adjust the window size.
+
+Step 3 (continued): Adjust the window size by moving the `left` pointer.
+- Subtract the value at index `left` from `window_sum`: 25 - 10 = 15.
+- Move the `left` pointer to the next number.
+
+We've found a subarray that sums up to the target sum (15): [7, 10, 5, 1, 3]. The starting index is 2, and the ending index is 6.
+
+In this example, the algorithm adjusts the window size and updates the sum to find the subarray that sums up to the target sum.
+
+
+# SESSION 10
+
+## Merge Intervals Pattern
+
+
+Certainly! The merge intervals pattern is a technique used to merge overlapping intervals or ranges. It is commonly used in scenarios where we have a collection of intervals and need to combine or merge overlapping intervals into a consolidated set.
+
+Let's consider an example to understand this pattern better. Suppose we have a list of intervals representing appointments on a calendar. Each interval consists of a start time and an end time. Our goal is to merge any overlapping intervals and return the merged set of intervals.
+
+Here's an example implementation in Python, along with comments explaining each step:
+
+### Example - 1
+
+```python
+def merge_intervals(intervals):
+    # Step 1: Sort the intervals based on the start time
+    intervals.sort(key=lambda x: x[0])
+    
+    # Step 2: Initialize the result list with the first interval
+    merged = [intervals[0]]
+    
+    # Step 3: Iterate through the remaining intervals
+    for i in range(1, len(intervals)):
+        curr_start, curr_end = intervals[i]
+        prev_start, prev_end = merged[-1]  # Get the last merged interval
+        
+        if curr_start <= prev_end:  # Check for overlap
+            # Step 4: Merge the current interval with the previous interval
+            merged[-1] = [prev_start, max(prev_end, curr_end)]
+        else:
+            # Step 5: No overlap, add the current interval to the merged list
+            merged.append([curr_start, curr_end])
+    
+    # Step 6: Return the merged intervals
+    return merged
+```
+
+Now, let's pass some example values into the program to see how the merge intervals pattern works:
+
+```python
+intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
+
+# Calling the merge_intervals function
+merged_intervals = merge_intervals(intervals)
+print(merged_intervals)
+```
+
+Output:
+```
+[[1, 6], [8, 10], [15, 18]]
+```
+
+In this example, we have four intervals: [1, 3], [2, 6], [8, 10], and [15, 18]. The intervals [1, 3] and [2, 6] overlap, so they can be merged into a single interval [1, 6]. The resulting merged intervals are [[1, 6], [8, 10], [15, 18]].
+
+By following the steps in the code, we sort the intervals based on the start time, iterate through them, and merge overlapping intervals when necessary. The merge intervals pattern helps us efficiently consolidate and merge intervals in various applications such as scheduling, time management, and interval-based analysis.
+
+### Step-by-Step Explanation for above Example
+
+Example: Given a list of intervals representing appointments on a calendar, merge any overlapping intervals and return the merged set of intervals.
+
+Step 1: Sort the intervals based on the start time.
+- We have the following intervals: [[1, 3], [2, 6], [8, 10], [15, 18]].
+- Sorting the intervals based on the start time gives us: [[1, 3], [2, 6], [8, 10], [15, 18]].
+
+Step 2: Initialize the result list with the first interval.
+- We start with the first interval: [1, 3].
+- The merged list is currently [[1, 3]].
+
+Step 3: Iterate through the remaining intervals.
+- We iterate from the second interval to the last interval.
+- The first interval in the iteration is [2, 6].
+
+Step 4: Check for overlap and merge if necessary.
+- We compare the start time of the current interval (2) with the end time of the last merged interval (3).
+- Since there is an overlap (2 <= 3), we merge the intervals into [1, 6].
+- The merged list becomes [[1, 6]].
+
+Step 3 (continued): Move to the next interval.
+- The next interval is [8, 10].
+
+Step 4: Check for overlap and merge if necessary.
+- We compare the start time of the current interval (8) with the end time of the last merged interval (6).
+- There is no overlap (8 > 6), so we add the current interval to the merged list.
+- The merged list becomes [[1, 6], [8, 10]].
+
+Step 3 (continued): Move to the last interval.
+- The last interval is [15, 18].
+
+Step 4: Check for overlap and merge if necessary.
+- We compare the start time of the current interval (15) with the end time of the last merged interval (10).
+- There is no overlap (15 > 10), so we add the current interval to the merged list.
+- The merged list becomes [[1, 6], [8, 10], [15, 18]].
+
+Step 6: Return the merged intervals.
+- The final merged intervals are [[1, 6], [8, 10], [15, 18]].
+
+By following this step-by-step process, we successfully merged the overlapping intervals in the example. The merge intervals pattern allows us to consolidate and merge overlapping intervals efficiently.
+
+
+### Step by Step With Different Set of Intervalsd
+
+Certainly! Let's go through the merge intervals pattern step by step using a new set of intervals as an example.
+
+Example: Given a list of intervals representing appointments on a calendar, merge any overlapping intervals and return the merged set of intervals.
+
+Let's consider the following set of intervals: [[1, 5], [2, 7], [8, 10], [11, 13], [12, 16], [14, 18]].
+
+Step 1: Sort the intervals based on the start time.
+- Sorting the intervals based on the start time gives us: [[1, 5], [2, 7], [8, 10], [11, 13], [12, 16], [14, 18]].
+
+Step 2: Initialize the result list with the first interval.
+- We start with the first interval: [1, 5].
+- The merged list is currently [[1, 5]].
+
+Step 3: Iterate through the remaining intervals.
+- We iterate from the second interval to the last interval.
+- The first interval in the iteration is [2, 7].
+
+Step 4: Check for overlap and merge if necessary.
+- We compare the start time of the current interval (2) with the end time of the last merged interval (5).
+- Since there is an overlap (2 <= 5), we merge the intervals into [1, 7].
+- The merged list becomes [[1, 7]].
+
+Step 3 (continued): Move to the next interval.
+- The next interval is [8, 10].
+
+Step 4: Check for overlap and merge if necessary.
+- We compare the start time of the current interval (8) with the end time of the last merged interval (7).
+- There is no overlap (8 > 7), so we add the current interval to the merged list.
+- The merged list becomes [[1, 7], [8, 10]].
+
+Step 3 (continued): Move to the next interval.
+- The next interval is [11, 13].
+
+Step 4: Check for overlap and merge if necessary.
+- We compare the start time of the current interval (11) with the end time of the last merged interval (10).
+- There is no overlap (11 > 10), so we add the current interval to the merged list.
+- The merged list becomes [[1, 7], [8, 10], [11, 13]].
+
+Step 3 (continued): Move to the next interval.
+- The next interval is [12, 16].
+
+Step 4: Check for overlap and merge if necessary.
+- We compare the start time of the current interval (12) with the end time of the last merged interval (13).
+- Since there is an overlap (12 <= 13), we merge the intervals into [11, 16].
+- The merged list becomes [[1, 7], [8, 10], [11, 16]].
+
+Step 3 (continued): Move to the next interval.
+- The next interval is [14, 18].
+
+Step 4: Check for overlap and merge if necessary.
+- We compare the start time of the current interval (14) with the end time of the last merged interval (16).
+- Since there is an overlap (14 <= 16), we merge the intervals into [11, 18].
+- The merged list becomes [[1, 7], [8, 10], [11, 18]].
+
+Step 6: Return the merged intervals.
+- The final merged intervals are [[1, 7], [8, 10], [11, 18]].
+
+By following this step-by-step process, we
+
+ successfully merged the overlapping intervals in the example. The merge intervals pattern allows us to consolidate and merge overlapping intervals efficiently.
