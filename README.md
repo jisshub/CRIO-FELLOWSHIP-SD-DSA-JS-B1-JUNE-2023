@@ -1853,5 +1853,167 @@ By following this step-by-step process, we successfully merged the overlapping i
 
 ## HashMap
 
+- Map is a customized version of hashmaps.
+- Key-Value pair with a unique key.
+- Set, Get and Delete operations
+- It uses a technique called hashing to generate the unique key for every value we put into it.
 
-https://chat.openai.com/share/6989ef88-db3f-4624-9fe2-f005da19e39e
+Certainly! Hashmaps, also known as hash tables or dictionaries, are a popular data structure used to store key-value pairs. In a hashmap, keys are unique and associated with corresponding values, allowing for efficient retrieval and storage of data.
+
+Let's dive into the concept of hashmaps step by step using a simple example:
+
+### Step 1: Understanding the Hashing Process
+- Hashmaps use a hashing function to convert keys into an index in an array.
+- The hashing function takes the key as input and computes a hash code, which is an integer value.
+- The hash code is then mapped to an index in the underlying array using a process called modulo operation (%), which calculates the remainder after division.
+- This mapping ensures that each key is associated with a unique index in the array.
+
+### Step 2: Storing Key-Value Pairs
+- To store a key-value pair in a hashmap, follow these steps:
+  1. Compute the hash code for the given key.
+  2. Map the hash code to an index in the array using the modulo operation.
+  3. Store the key-value pair at the calculated index in the array.
+  4. If there is a collision (i.e., two or more keys hash to the same index), handle it using techniques like chaining or open addressing.
+
+### Step 3: Retrieving Values from a Hashmap
+- To retrieve a value from a hashmap based on a key, follow these steps:
+  1. Compute the hash code for the given key.
+  2. Map the hash code to an index in the array using the modulo operation.
+  3. Retrieve the value stored at the calculated index in the array.
+
+### Step 4: Updating or Deleting Values in a Hashmap
+- To update the value associated with a key or delete a key-value pair from a hashmap, follow these steps:
+  1. Compute the hash code for the given key.
+  2. Map the hash code to an index in the array using the modulo operation.
+  3. Update the value stored at the calculated index in the array with the new value or remove the key-value pair from the array.
+
+Here's an example implementation of a hashmap in Python to illustrate these steps:
+
+```python
+class HashMap:
+    def __init__(self):
+        self.size = 10  # Size of the underlying array
+        self.array = [[] for _ in range(self.size)]  # Initialize the array with empty lists
+
+    def _hash(self, key):
+        # Compute the hash code by summing the ASCII values of key characters
+        return sum(ord(c) for c in key) % self.size
+
+    def put(self, key, value):
+        index = self._hash(key)
+        for pair in self.array[index]:
+            if pair[0] == key:
+                pair[1] = value  # Update the value if the key already exists
+                return
+        self.array[index].append([key, value])  # Add a new key-value pair
+
+    def get(self, key):
+        index = self._hash(key)
+        for pair in self.array[index]:
+            if pair[0] == key:
+                return pair[1]  # Return the value if the key is found
+        return None  # Return None if the key is not found
+
+    def remove(self, key):
+        index = self._hash(key)
+        for pair in self.array[index]:
+            if pair[0] == key:
+                self.array[index].remove(pair)  # Remove the key-value pair if the key is found
+                return
+
+# Usage example
+hashmap = HashMap()
+hashmap.put("apple", 5)
+hashmap.put("banana", 10)
+print(hashmap.get
+
+("apple"))  # Output: 5
+print(hashmap.get("banana"))  # Output: 10
+hashmap.remove("apple")
+print(hashmap.get("apple"))  # Output: None
+```
+
+In this example, we create a `HashMap` class that uses an underlying array to store key-value pairs. The `_hash` method calculates the hash code for a given key, and the `put`, `get`, and `remove` methods implement the storing, retrieving, and deleting operations, respectively.
+
+By following the steps outlined above, we can efficiently store, retrieve, update, and remove key-value pairs using a hashmap.
+
+Certainly! Let's delve into the fundamental operations of hashing, such as set, get, and delete, using a hash table as an example.
+
+A hash table, also known as a hashmap, is a data structure that uses hashing to efficiently store and retrieve key-value pairs. The set operation inserts a key-value pair into the hash table, the get operation retrieves the value associated with a given key, and the delete operation removes a key-value pair from the hash table.
+
+Let's explore each operation step by step:
+
+### 1. Set Operation:
+- To perform the set operation, follow these steps:
+  1. Compute the hash code for the given key.
+  2. Map the hash code to an index in the hash table using the modulo operation.
+  3. If the index is empty, create a new entry with the key-value pair.
+  4. If the index already contains an entry, handle collisions using techniques like chaining or open addressing.
+
+### 2. Get Operation:
+- To perform the get operation, follow these steps:
+  1. Compute the hash code for the given key.
+  2. Map the hash code to an index in the hash table using the modulo operation.
+  3. If the index is empty, the key is not present in the hash table. Return an appropriate value or throw an exception.
+  4. If the index contains an entry, compare the stored key with the given key. If they match, return the associated value. Otherwise, handle collisions and continue searching until a match is found or the end of the collision chain is reached.
+
+### 3. Delete Operation:
+- To perform the delete operation, follow these steps:
+  1. Compute the hash code for the given key.
+  2. Map the hash code to an index in the hash table using the modulo operation.
+  3. If the index is empty, the key is not present in the hash table. Do nothing or return an appropriate value.
+  4. If the index contains an entry, compare the stored key with the given key. If they match, remove the entry from the hash table. Otherwise, handle collisions and continue searching until a match is found or the end of the collision chain is reached.
+
+Here's a simplified Python implementation of a hash table to illustrate these operations:
+
+```python
+class HashTable:
+    def __init__(self, size):
+        self.size = size
+        self.table = [[] for _ in range(size)]
+
+    def _hash(self, key):
+        return sum(ord(c) for c in key) % self.size
+
+    def set(self, key, value):
+        index = self._hash(key)
+        for entry in self.table[index]:
+            if entry[0] == key:
+                entry[1] = value  # Update the value if the key already exists
+                return
+        self.table[index].append([key, value])  # Add a new key-value pair
+
+    def get(self, key):
+        index = self._hash(key)
+        for entry in self.table[index]:
+            if entry[0] == key:
+                return entry[1]  # Return the value if the key is found
+        return None  # Return None if the key is not found
+
+    def delete(self, key):
+        index = self._hash(key)
+        for entry in self.table[index]:
+            if entry[0] == key:
+                self.table[index].remove(entry)  # Remove the entry if the key is found
+                return
+```
+
+In this implementation, the `HashTable` class uses a list of lists (`table`) to represent the hash table. The `_hash` method calculates the hash code for a given key, and the `set`, `get`, and `delete`
+
+methods implement the set, get, and delete operations, respectively.
+
+You can use this implementation as follows:
+
+```python
+hash_table = HashTable(10)
+hash_table.set("apple", 5)
+hash_table.set("banana", 10)
+print(hash_table.get("apple"))  # Output: 5
+print(hash_table.get("banana"))  # Output: 10
+hash_table.delete("apple")
+print(hash_table.get("apple"))  # Output: None
+```
+
+In this example, we create a `HashTable` object with a size of 10. We then perform the set operation to insert key-value pairs into the hash table, retrieve values using the get operation, and delete entries using the delete operation.
+
+By following these steps, you can effectively use hash tables to store, retrieve, and delete key-value pairs in an efficient manner.
